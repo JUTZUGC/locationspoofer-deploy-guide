@@ -20,6 +20,7 @@
 >
 > ```text
 > 你好，帮我从 github 部署 JUTZUGC/locationspoofer-deploy-guide 到我的电脑上
+> 然后在bszip.me下载kitsune mask环境隐藏 接着在浏览器里面下载mumu模拟器 和高德地图安卓版和运动世界安卓版到桌面
 > ```
 
 2. **发送部署指令**
