@@ -1,0 +1,109 @@
+{
+  "owner": "JUTZUGC",
+  "code": "JUTZUGC",
+  "project": {
+    "key": "locationspoofer",
+    "nameCn": "LocationSpoofer",
+    "repoName": "locationspoofer-deploy-guide",
+    "oneLiner": "2.1k stars，GPL-3.0，Android 全局定位、路线与设备环境测试工具",
+    "officialRepo": "https://github.com/HuangZhuoRui/LocationSpoofer",
+    "officialDocs": "https://github.com/HuangZhuoRui/LocationSpoofer/blob/main/README.md",
+    "stars": "2.1k",
+    "license": "GPL-3.0",
+    "highlights": [
+      "定位模拟：地图选点、定点模拟、路线规划与回放",
+      "路线录制：记录并重放移动轨迹",
+      "环境数据：采集本机 WiFi / 基站，用于本地模拟",
+      "授权机制：每个账号最多 10 个已批准或待审核包名",
+      "免费额度：OSM 普通地图、地点搜索、定点/路线模拟、收藏、云备份",
+      "平台：Android ARM64 / ARM32；桌面模拟器 AwesomeDroid 尚未发布"
+    ],
+    "mcpSupport": "LocationSpoofer 客户端本身不含 MCP；本仓库的 MCP 只提供安装步骤、包名申请流程与常见问题，不参与定位模拟。",
+    "webuiUrl": "",
+    "adapterPorts": "",
+    "collectedAt": "2026-10-28",
+    "verification": [
+      [
+        "Release v3.1.2 的 ARM64 APK 已下载，SHA256 与 Release 记录一致（18.7 MB）",
+        "已核对 2026-10-28"
+      ],
+      [
+        "ARM32 APK 的资产与 SHA256 digest 已核对（14.7 MB）",
+        "已核对 2026-10-28"
+      ],
+      [
+        "README 确认包名申请、免费额度与会员功能边界",
+        "已核对 2026-10-28"
+      ],
+      [
+        "未实测安装与定位模拟（本机无 Android 设备）",
+        "说明 2026-10-28"
+      ],
+      [
+        "非目标宿主调用被拦截（HOST_NOT_ALLOWED）",
+        "已验证 2026-10-28"
+      ]
+    ],
+    "deploy": {
+      "type": "binary",
+      "steps": [
+        "curl -fL -o LocationSpoofer.apk \"https://github.com/HuangZhuoRui/LocationSpoofer/releases/download/v3.1.2/LocationSpoofer-v3.1.2-global-64bit-arm64-v8a.apk\"",
+        "echo \"20185e30c3fcc588461c29b90ee28f470cc214a5eda5584a37498b63b224c4ee  LocationSpoofer.apk\" | sha256sum -c -",
+        "if command -v adb >/dev/null 2>&1; then adb install -r LocationSpoofer.apk; else echo \"已下载并校验：请把 LocationSpoofer.apk 传到 Android 手机手动安装\"; fi",
+        "echo \"安装完成：打开 LocationSpoofer 注册登录，并在申请网站提交被测试应用包名\""
+      ],
+      "stepsPs": [
+        "curl.exe -L --fail -o LocationSpoofer.apk \"https://github.com/HuangZhuoRui/LocationSpoofer/releases/download/v3.1.2/LocationSpoofer-v3.1.2-global-64bit-arm64-v8a.apk\"",
+        "if ((Get-FileHash LocationSpoofer.apk -Algorithm SHA256).Hash.ToLower() -ne '20185e30c3fcc588461c29b90ee28f470cc214a5eda5584a37498b63b224c4ee') { throw 'SHA256 校验失败，请重新下载' }",
+        "if (Get-Command adb -ErrorAction SilentlyContinue) { adb install -r .\\LocationSpoofer.apk } else { Write-Host '已下载并校验：请把 LocationSpoofer.apk 传到 Android 手机手动安装' }",
+        "Write-Host '安装完成：打开 LocationSpoofer 注册登录，并在申请网站提交被测试应用包名'"
+      ],
+      "source": "https://github.com/HuangZhuoRui/LocationSpoofer/releases/tag/v3.1.2"
+    },
+    "pitfalls": [
+      "装完无法模拟：先确认账号已登录，且被测试应用的包名已在申请网站通过审核",
+      "提交包名后一直待审核：每个账号最多 10 个已批准或待审核包名，先清理不用的再提交",
+      "地图只有普通样式：Google 平面图、卫星图、地点搜索与道路规划需要有效会员",
+      "升级后模拟失效：覆盖安装会保留应用数据，更新后按全局方案重新配置框架作用域并重启设备",
+      "设备不稳定或应用闪退：Root 与系统级接口有风险，先在备用机测试并备份数据",
+      "不要把模拟结果当真实位置：不能用于考勤、运动成绩或到场证明；仅测试自有或已授权应用",
+      "32 位设备装不上：改用 armeabi-v7a 安装包，并核对对应的 SHA256"
+    ]
+  },
+  "gate": {
+    "allow": [
+      "dumate"
+    ],
+    "label": "百度搭子",
+    "url": "https://www.dumate.cn/",
+    "guideUrl": "https://github.com/JUTZUGC/locationspoofer-deploy-guide",
+    "howToFix": [
+      "1. 打开 https://www.dumate.cn/ ，下载并安装「百度搭子」电脑端（Windows / macOS）",
+      "2. 用账号登录",
+      "3. 在对话窗口发送：你好，帮我从 github 部署 JUTZUGC/locationspoofer-deploy-guide 到我的电脑上",
+      "4. 部署完成后，在同一对话窗口里继续使用"
+    ],
+    "hint": "请改用「百度搭子」部署后再使用；本工具没有网页版入口。",
+    "onError": "allow"
+  },
+  "keywords": [
+    "LocationSpoofer 安装",
+    "LocationSpoofer 教程",
+    "Android 定位模拟",
+    "安卓 虚拟定位",
+    "Android 路线模拟",
+    "AwesomeDroid",
+    "虚拟定位 Root",
+    "LocationSpoofer APK",
+    "LocationSpoofer 中文",
+    "locationspoofer deploy guide"
+  ],
+  "topics": [
+    "android",
+    "location-spoofing",
+    "gps",
+    "testing",
+    "adb",
+    "development-tools"
+  ]
+}

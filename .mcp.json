@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "locationspoofer-guide": {
+      "command": "node",
+      "args": [
+        "mcp-server.mjs"
+      ]
+    }
+  }
+}
